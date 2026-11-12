@@ -13,7 +13,7 @@ import '../event_source.dart';
 ///
 /// Contentful answers:
 /// { "sys": { "type": "Array" }, "total": 9, "skip": 0, "limit": 100,
-///   "items": 
+///   "items":
 /// [ { "sys": { "id": "3xYz...", "type": "Entry", ... },
 ///                "fields": { "title": "Hour of Code", "orgId": "csc",
 ///                           "startsAt": "2026-11-08T13:00+08:00",
@@ -48,15 +48,9 @@ class ContentfulEventSource implements EventSource {
     final uri = Uri.https(
       'cdn.contentful.com',
       '/spaces/$spaceId/environments/$environment/entries',
-      {
-        'content_type': 'fairEvent',
-        'order': 'fields.startsAt',
-        'limit': '100',
-      },
+      {'content_type': 'fairEvent', 'order': 'fields.startsAt', 'limit': '100'},
     );
-    final headers = <String, String>{
-      'Authorization': 'Bearer $token',
-    };
+    final headers = <String, String>{'Authorization': 'Bearer $token'};
     // EXPLAIN E3: Open one of the other two CMS files and compare. Which
     // lines differ, and which are the same? Why is the parsing the part
     // that changes most from one CMS to another?
@@ -82,7 +76,7 @@ class ContentfulEventSource implements EventSource {
             : DateTime.now(),
         venue: fields['venue'] ?? '',
         description: fields['description'] ?? '',
-        cancelled: fields['cacelled'] ?? false,
+        cancelled: fields['cancelled'] ?? false,
       );
     }).toList();
   }

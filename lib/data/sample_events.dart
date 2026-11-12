@@ -8,7 +8,7 @@ import 'event_source.dart';
 /// Times are in UTC, like a CMS sends them. 05:00 UTC is 1:00 PM in the
 /// Philippines (UTC+8).
 class SampleEventSource implements EventSource {
-  SampleEventSource({this.delay = const Duration(seconds: 1)});
+  SampleEventSource({this.delay = Duration.zero});
 
   final Duration delay;
 
@@ -17,7 +17,9 @@ class SampleEventSource implements EventSource {
 
   @override
   Future<List<FairEvent>> fetchEvents() async {
-    await Future<void>.delayed(delay);
+    if (delay > Duration.zero) {
+      await Future<void>.delayed(delay);
+    }
     return sampleEvents;
   }
 }

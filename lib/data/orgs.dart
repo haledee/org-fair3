@@ -39,17 +39,16 @@ enum ServerMode { success, empty, error, random }
 /// A pretend web service. It waits like a real network call, then returns
 /// the orgs, returns an empty list, or throws an error.
 class OrgRepository {
-  OrgRepository({
-    this.mode = ServerMode.success,
-    this.delay = const Duration(seconds: 2),
-  });
+  OrgRepository({this.mode = ServerMode.success, this.delay = Duration.zero});
 
   ServerMode mode;
   final Duration delay;
   final _random = Random();
 
   Future<List<Org>> fetchOrgs() async {
-    await Future<void>.delayed(delay);
+    if (delay > Duration.zero) {
+      await Future<void>.delayed(delay);
+    }
     final result = mode == ServerMode.random
         ? ServerMode.values[_random.nextInt(3)]
         : mode;

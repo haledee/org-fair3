@@ -18,4 +18,4 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter analyze
-      - run: flutter test --dart-define=CMS=${{ vars.CMS }} --dart-define=CMS_SPACE=${{ vars.CMS_SPACE }} --dart-define=CMS_TOKEN=${{ secrets.CMS_TOKEN }}
+      - run: flutter test --dart-define=CMS=${{ vars.CMS }} --dart-define=CMS_URL=${{ vars.CMS_URL }} --dart-define=CMS_SPACE=${{ vars.CMS_SPACE }} --dart-define=CMS_PROJECT=${{ vars.CMS_PROJECT }} --dart-define=CMS_DATASET=${{ vars.CMS_DATASET }} --dart-define=CMS_TOKEN=${{ secrets.CMS_TOKEN }}
