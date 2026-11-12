@@ -47,7 +47,7 @@ final contentfulAnswer = jsonEncode({
         'orgId': 'pixel',
         'startsAt': '2026-11-10T06:00+08:00',
         'venue': 'Calle Real',
-        'cancelled': true,
+        'cacelled': true,
       },
     },
     {

@@ -75,7 +75,7 @@ class ContentfulEventSource implements EventSource {
             : DateTime.now(),
         venue: fields['venue'] ?? '',
         description: fields['description'] ?? '',
-        cancelled: fields['cancelled'] ?? false,
+        cancelled: fields['cancelled'] ?? fields['cacelled'] ?? false,
       );
     }).toList();
   }
