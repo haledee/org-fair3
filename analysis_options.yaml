@@ -1,7 +1,10 @@
+include: package:flutter_lints/flutter.yaml
+
 analyzer:
   exclude:
     - build/**
     - web/**
     - windows/**
     - android/**
-include: package:flutter_lints/flutter.yaml
+  errors:
+    deprecated_member_use: ignore
